@@ -1,0 +1,148 @@
+/* Hero: full-bleed brand film */
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: max(36rem, calc(100svh - var(--header-h)));
+  padding-block: var(--space-xl) var(--space-l);
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--black) url("../images/hero-poster.webp") center / cover no-repeat;
+}
+
+.hero__video {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Legibility: the film stays bright up top and falls to black where the type sits */
+.hero__shade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(to top, var(--black) 0%, rgb(0 0 0 / 88%) 28%, rgb(0 0 0 / 40%) 58%, rgb(0 0 0 / 12%) 100%),
+    linear-gradient(to right, rgb(0 0 0 / 55%) 0%, transparent 65%);
+}
+
+/* Viewfinder frame over the film */
+.hero__frame {
+  --vf-length: clamp(1.5rem, 1rem + 2vw, 3rem);
+
+  position: absolute;
+  inset: clamp(0.75rem, 2vw, 1.75rem);
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--white-72) 0 0) top left / var(--vf-length) 1px,
+    linear-gradient(var(--white-72) 0 0) top left / 1px var(--vf-length),
+    linear-gradient(var(--white-72) 0 0) top right / var(--vf-length) 1px,
+    linear-gradient(var(--white-72) 0 0) top right / 1px var(--vf-length),
+    linear-gradient(var(--white-72) 0 0) bottom left / var(--vf-length) 1px,
+    linear-gradient(var(--white-72) 0 0) bottom left / 1px var(--vf-length),
+    linear-gradient(var(--white-72) 0 0) bottom right / var(--vf-length) 1px,
+    linear-gradient(var(--white-72) 0 0) bottom right / 1px var(--vf-length);
+  background-repeat: no-repeat;
+}
+
+.hero__content {
+  position: relative;
+}
+
+.hero__title {
+  display: grid;
+  gap: var(--space-s);
+  margin-bottom: var(--space-m);
+}
+
+.hero__kicker {
+  font-family: var(--font-body);
+  font-size: var(--step--1);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  line-height: 1.6;
+  color: var(--white);
+  max-width: 40ch;
+}
+
+.hero__headline {
+  font-size: var(--step-5);
+  line-height: 0.92;
+  max-width: 11ch;
+}
+
+.hero__headline em {
+  font-style: normal;
+  color: var(--green);
+}
+
+.hero__sub {
+  max-width: 54ch;
+  font-size: var(--step-1);
+  line-height: 1.55;
+  color: var(--white-80);
+  margin-bottom: var(--space-l);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+/* REC / pause control (WCAG 2.2.2: the loop runs longer than five seconds) */
+.hero__rec {
+  position: absolute;
+  top: clamp(1.25rem, 3vw, 2.5rem);
+  right: clamp(1.25rem, 3vw, 2.5rem);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.9rem;
+  background: rgb(0 0 0 / 55%);
+  border: 1px solid var(--white-50);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.hero__rec:hover {
+  border-color: var(--white);
+}
+
+.hero__rec-dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: var(--green);
+}
+
+.hero__rec[aria-pressed="true"] .hero__rec-dot {
+  border-radius: 0;
+  background: none;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0.35rem 0 0.35rem 0.6rem;
+  border-color: transparent transparent transparent var(--white);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero__rec[aria-pressed="false"] .hero__rec-dot {
+    animation: rec-pulse 1.6s ease-in-out infinite;
+  }
+}
+
+@keyframes rec-pulse {
+  50% {
+    opacity: 0.25;
+  }
+}

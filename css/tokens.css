@@ -1,0 +1,52 @@
+/* Design tokens: CD Visuals
+   Palette is the three clean-logo colors, pixel-sampled and matched exactly.
+   #000000 is an approved project exception (it is the logo's true background). */
+
+:root {
+  /* Brand palette */
+  --black: #000000;
+  --white: #fefefe;
+  --green: #7fb164;
+
+  /* Tints of the palette (opacity only, no new hues) */
+  --white-80: rgb(254 254 254 / 80%);
+  --white-72: rgb(254 254 254 / 72%);
+  --white-50: rgb(254 254 254 / 50%);
+  --white-16: rgb(254 254 254 / 16%);
+  --white-08: rgb(254 254 254 / 8%);
+  --black-72: rgb(0 0 0 / 72%);
+  --black-16: rgb(0 0 0 / 16%);
+
+  /* Type */
+  --font-display: "Anton", "Arial Narrow", impact, sans-serif;
+  --font-body: "Manrope", "Segoe UI", system-ui, sans-serif;
+  --step--1: clamp(0.8125rem, 0.78rem + 0.15vw, 0.875rem);
+  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --step-1: clamp(1.2rem, 1.1rem + 0.5vw, 1.45rem);
+  --step-2: clamp(1.5rem, 1.25rem + 1.2vw, 2.25rem);
+  --step-3: clamp(2.1rem, 1.5rem + 3vw, 3.75rem);
+  --step-4: clamp(2.75rem, 1.6rem + 5.5vw, 6rem);
+  --step-5: clamp(3.25rem, 1.5rem + 8.5vw, 8.5rem);
+  --tracking-wide: 0.32em;
+
+  /* Space */
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-s: 1rem;
+  --space-m: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+  --space-l: clamp(2rem, 1.5rem + 2vw, 3rem);
+  --space-xl: clamp(3rem, 2rem + 4vw, 5.5rem);
+  --space-2xl: clamp(4.5rem, 3rem + 7vw, 9rem);
+  --gutter: clamp(1rem, 0.5rem + 2.5vw, 2.5rem);
+  --max-width: 78rem;
+
+  /* Shape and motion */
+  --radius: 0;
+  --hairline: 1px solid var(--white-16);
+  --header-h: 4.5rem;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  /* Signature: viewfinder corner marks */
+  --vf-length: clamp(1rem, 0.8rem + 1vw, 1.75rem);
+  --vf-weight: 2px;
+}

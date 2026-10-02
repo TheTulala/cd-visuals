@@ -1,0 +1,240 @@
+/* Contact section + project form */
+
+.contact {
+  border-top: var(--hairline);
+}
+
+.contact__grid {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+.contact__intro .lede {
+  margin-top: var(--space-m);
+}
+
+.contact__direct {
+  list-style: none;
+  padding: 0;
+  margin-top: var(--space-l);
+  display: grid;
+  border-top: var(--hairline);
+}
+
+.contact__direct li {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  align-items: baseline;
+  gap: var(--space-s);
+  padding-block: var(--space-s);
+  border-bottom: var(--hairline);
+}
+
+.contact__label {
+  font-size: var(--step--1);
+  font-weight: 800;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--green);
+}
+
+.contact__direct a,
+.contact__direct li > span:last-child {
+  font-size: var(--step-1);
+  font-weight: 700;
+  color: var(--white);
+  overflow-wrap: anywhere;
+}
+
+.contact__direct a {
+  text-decoration-color: var(--white-50);
+}
+
+.contact__direct a:hover {
+  text-decoration-color: var(--green);
+}
+
+.contact__panel {
+  padding: clamp(1.25rem, 1rem + 2vw, 2.75rem);
+  background-color: var(--white-08);
+}
+
+.contact-form {
+  display: grid;
+  gap: var(--space-m);
+}
+
+.contact-form[hidden] {
+  display: none;
+}
+
+.form-row {
+  display: grid;
+  gap: var(--space-m);
+}
+
+@media (width >= 40em) {
+  .form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.form-field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.form-field label {
+  font-size: var(--step--1);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--white);
+}
+
+.form-field__req {
+  color: var(--green);
+}
+
+.form-field__opt {
+  font-weight: 500;
+  color: var(--white-72);
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.75rem 0.9rem;
+  background: var(--black);
+  border: 1px solid var(--white-50);
+  border-radius: var(--radius);
+  font-size: 1rem;
+  color: var(--white);
+  transition: border-color 0.2s var(--ease);
+}
+
+.form-field textarea {
+  resize: vertical;
+  min-height: 8rem;
+}
+
+.form-field select {
+  appearance: none;
+  padding-right: 2.75rem;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--white) 50%),
+    linear-gradient(135deg, var(--white) 50%, transparent 50%);
+  background-position:
+    calc(100% - 1.3rem) 55%,
+    calc(100% - 0.95rem) 55%;
+  background-size: 0.35rem 0.35rem;
+  background-repeat: no-repeat;
+}
+
+.form-field select option {
+  background: var(--black);
+  color: var(--white);
+}
+
+.form-field input:hover,
+.form-field select:hover,
+.form-field textarea:hover {
+  border-color: var(--white-80);
+}
+
+.form-field input:focus-visible,
+.form-field select:focus-visible,
+.form-field textarea:focus-visible {
+  border-color: var(--green);
+  outline: 2px solid var(--green);
+  outline-offset: 0;
+}
+
+/* Errors: signalled by text, icon and a heavier border, never by color alone */
+.form-field input[aria-invalid="true"],
+.form-field textarea[aria-invalid="true"] {
+  border: 2px solid var(--white);
+}
+
+.form-field__error {
+  display: none;
+  font-size: var(--step--1);
+  font-weight: 700;
+  color: var(--white);
+}
+
+.form-field__error.is-visible {
+  display: block;
+}
+
+.form-field__error.is-visible::before {
+  content: "!";
+  display: inline-grid;
+  place-items: center;
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-right: 0.45rem;
+  background: var(--white);
+  color: var(--black);
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.form-note {
+  font-size: var(--step--1);
+  color: var(--white-72);
+}
+
+.contact-form__submit {
+  width: 100%;
+}
+
+.contact-form__submit:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.form-status:empty {
+  display: none;
+}
+
+.form-status {
+  padding: var(--space-s);
+  border: 2px solid var(--white);
+  font-weight: 600;
+}
+
+.form-status a {
+  font-weight: 800;
+}
+
+.form-thankyou {
+  display: grid;
+  gap: var(--space-s);
+  padding-block: var(--space-l);
+}
+
+.form-thankyou[hidden] {
+  display: none;
+}
+
+.form-thankyou h3 {
+  font-size: var(--step-3);
+  color: var(--green);
+}
+
+.form-thankyou p {
+  color: var(--white-80);
+}
+
+.form-thankyou:focus {
+  outline: none;
+}
+
+@media (width >= 60em) {
+  .contact__grid {
+    grid-template-columns: 1fr 1.1fr;
+    align-items: start;
+  }
+}
