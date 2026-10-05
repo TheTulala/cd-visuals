@@ -1,4 +1,96 @@
-/* Page sections: proof, thesis, services, brand package, process, work, founder, testimonials, FAQ, footer */
+/* Page sections: reels, proof, thesis, services, testimonials, brand package, process, work, founder, FAQ, footer */
+
+/* REELS: vertical client videos, muted by default (controls revealed by reels.js) */
+.reel {
+  position: relative;
+  margin: 0;
+}
+
+.reel__video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  background: var(--black);
+}
+
+/* Service cards trim the 9:16 reels to 2:3 so the cards stay readable; captions sit inside the crop */
+.service-card__reel .reel__video {
+  aspect-ratio: 2 / 3;
+}
+
+.reel__controls {
+  position: absolute;
+  inset: auto var(--space-xs) var(--space-xs);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.reel__controls[hidden] {
+  display: none;
+}
+
+.reel__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.8rem;
+  background: rgb(0 0 0 / 65%);
+  border: 1px solid var(--white-50);
+  color: var(--white);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.reel__btn:hover {
+  border-color: var(--white);
+}
+
+.reel__btn:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+
+/* Play state: triangle when paused, two bars while playing */
+.reel__play .reel__icon {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0.35rem 0 0.35rem 0.6rem;
+  border-color: transparent transparent transparent var(--white);
+}
+
+.reel.is-playing .reel__play .reel__icon {
+  width: 0.6rem;
+  height: 0.7rem;
+  border-width: 0 0.2rem;
+  border-color: var(--white);
+}
+
+/* Sound state: hollow dot when muted, green dot when on */
+.reel__sound .reel__icon {
+  width: 0.6rem;
+  height: 0.6rem;
+  border: 1px solid var(--white);
+  border-radius: 50%;
+}
+
+.reel__sound[aria-pressed="true"] {
+  border-color: var(--green);
+}
+
+.reel__sound[aria-pressed="true"] .reel__icon {
+  border-color: var(--green);
+  background: var(--green);
+}
 
 /* PROOF: the one full-green band, black text on green (8.4:1) */
 .proof {
@@ -153,6 +245,10 @@
   background: var(--green);
 }
 
+.service-card__reel {
+  margin-bottom: var(--space-xs);
+}
+
 .service-card__num {
   font-family: var(--font-display);
   font-size: var(--step-2);
@@ -225,7 +321,7 @@
 
   .service-card {
     display: grid;
-    grid-row: span 6;
+    grid-row: span 7;
     grid-template-rows: subgrid;
     gap: var(--space-s);
   }
@@ -235,7 +331,7 @@
   }
 }
 
-/* BRAND PACKAGE */
+/* BRAND PACKAGE (light) */
 .branding__title {
   max-width: 20ch;
   margin-bottom: var(--space-l);
@@ -244,7 +340,7 @@
 .compare {
   display: grid;
   margin-block: var(--space-xl);
-  border: var(--hairline);
+  border: 1px solid var(--black);
 }
 
 .compare__col {
@@ -252,12 +348,13 @@
 }
 
 .compare__col--before {
-  color: var(--white-72);
+  color: var(--black-72);
 }
 
+/* Inverted cell: white on black (20.8:1) */
 .compare__col--after {
-  background: var(--white);
-  color: var(--black);
+  background: var(--black);
+  color: var(--white);
 }
 
 .compare__title {
@@ -266,11 +363,11 @@
 }
 
 .compare__col--before .compare__title {
-  color: var(--white-72);
+  color: var(--black-72);
 }
 
 .compare__col--after .compare__title {
-  color: var(--black);
+  color: var(--white);
 }
 
 .compare__list {
@@ -293,7 +390,7 @@
   top: 0.8em;
   width: 1rem;
   height: 1px;
-  background: var(--white-50);
+  background: var(--black-72);
 }
 
 .compare__col--after li::before {
@@ -303,7 +400,7 @@
   top: 0.35em;
   width: 0.45rem;
   height: 0.85rem;
-  border: solid var(--black);
+  border: solid var(--green);
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
@@ -328,29 +425,29 @@
   padding: 0;
   display: grid;
   grid-template-columns: 1fr;
-  border-top: var(--hairline);
-  border-left: var(--hairline);
+  border-top: 1px solid var(--black-16);
+  border-left: 1px solid var(--black-16);
 }
 
 .includes__item {
   padding: var(--space-m);
-  border-right: var(--hairline);
-  border-bottom: var(--hairline);
+  border-right: 1px solid var(--black-16);
+  border-bottom: 1px solid var(--black-16);
   transition: background-color 0.3s var(--ease);
 }
 
 .includes__item:hover {
-  background: var(--white-08);
+  background: var(--black-04);
 }
 
 .includes__item h4 {
   font-size: var(--step-1);
   margin-bottom: 0.5rem;
-  color: var(--green);
+  color: var(--black);
 }
 
 .includes__item p {
-  color: var(--white-72);
+  color: var(--black-72);
   font-size: var(--step--1);
   line-height: 1.6;
 }
@@ -401,7 +498,7 @@
   }
 }
 
-/* PROCESS (light) */
+/* PROCESS */
 .steps {
   list-style: none;
   padding: 0;
@@ -414,7 +511,7 @@
 .step {
   position: relative;
   padding-top: var(--space-m);
-  border-top: 2px solid var(--black);
+  border-top: 2px solid var(--white);
 }
 
 .step__num {
@@ -423,18 +520,18 @@
   font-size: var(--step-4);
   line-height: 1;
   color: transparent;
-  -webkit-text-stroke: 1.5px var(--black);
+  -webkit-text-stroke: 1.5px var(--green);
   margin-bottom: var(--space-s);
 }
 
 .step__title {
   font-size: var(--step-2);
   margin-bottom: var(--space-xs);
-  color: var(--black);
+  color: var(--white);
 }
 
 .step p {
-  color: var(--black-72);
+  color: var(--white-72);
 }
 
 @media (width >= 52em) {
@@ -449,7 +546,11 @@
   }
 }
 
-/* WORK */
+/* WORK (follows the dark process band, so a hairline marks the change) */
+.work {
+  border-top: var(--hairline);
+}
+
 .work__head {
   margin-bottom: var(--space-xl);
 }
@@ -593,6 +694,7 @@
 
 .letter {
   display: grid;
+  align-content: start;
   gap: var(--space-m);
   max-width: 64ch;
 }
@@ -643,11 +745,27 @@
   color: var(--white-72);
 }
 
-.founder__media img {
+/* Founder photo with the BTS reel layered over its lower corner, like two frames on a contact sheet */
+.founder__media {
+  display: grid;
+  align-content: start;
+}
+
+.founder__photo img {
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
   object-position: center 20%;
+}
+
+.founder__reel {
+  position: relative;
+  z-index: 1;
+  justify-self: end;
+  width: min(56%, 15rem);
+  margin-top: calc(-1 * clamp(6rem, 18vw, 11rem));
+  margin-right: calc(-1 * var(--space-xs));
+  background-color: var(--black);
 }
 
 @media (width >= 60em) {
@@ -668,9 +786,11 @@
   .founder__media {
     grid-column: 2;
     grid-row: 2;
-    position: sticky;
-    top: calc(var(--header-h) + var(--space-l));
     align-self: start;
+  }
+
+  .founder__reel {
+    margin-right: 0;
   }
 }
 
@@ -679,15 +799,34 @@
   list-style: none;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
   gap: var(--space-m);
   margin-top: var(--space-xl);
 }
 
+@media (width >= 48em) {
+  .quotes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .quote figure {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   height: 100%;
+  margin: 0;
   padding: var(--space-l) var(--space-m);
   border: 1px solid var(--white-50);
+  border-top: 4px solid var(--green);
+}
+
+.quote blockquote p::before {
+  content: "\201C";
+  display: block;
+  font-family: var(--font-display);
+  font-size: 3em;
+  line-height: 0.8;
+  color: var(--green);
 }
 
 .quote blockquote p {
