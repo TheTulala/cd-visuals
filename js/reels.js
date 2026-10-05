@@ -16,9 +16,7 @@
       play: reel.querySelector(".reel__play"),
       sound: reel.querySelector(".reel__sound"),
       userPaused: false,
-      inView: false,
-      // data-reel-manual: hold on the poster until the visitor presses Play
-      manual: reel.hasAttribute("data-reel-manual")
+      inView: false
     };
     item.playLabel = item.play.querySelector(".reel__label");
     return item;
@@ -97,7 +95,7 @@
         const item = items[reels.indexOf(entry.target)];
         item.inView = entry.isIntersecting;
         if (item.inView) {
-          if (!reduceMotion && !item.manual && !item.userPaused) {
+          if (!reduceMotion && !item.userPaused) {
             start(item);
           }
         } else if (!item.video.paused) {
