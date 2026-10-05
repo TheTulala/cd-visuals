@@ -812,13 +812,38 @@
 }
 
 .quote figcaption {
-  display: grid;
+  display: flex;
+  align-items: center;
+  gap: var(--space-s);
   margin-top: var(--space-m);
+}
+
+/* Client headshots: small circle crops, with initials when no photo was supplied */
+.quote__avatar {
+  flex: none;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  border: 2px solid var(--green);
+  object-fit: cover;
+}
+
+.quote__avatar--initials {
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  letter-spacing: 0.04em;
+  color: var(--green);
+}
+
+.quote__who {
+  display: grid;
   font-weight: 800;
   color: var(--green);
 }
 
-.quote figcaption span {
+.quote__who span {
   font-weight: 600;
   color: var(--white-72);
 }
