@@ -3,7 +3,7 @@
 > Brand development and creative consulting studio in Rochester, NY, led by founder and creative director Chris Dodd. Brand development, social media management and marketing, photography, and cinematic brand films for founders, ecommerce and fashion brands, and local businesses and organizations. Brand. Social. Film. Tagline: "Turning content into currency."
 
 ## Site
-- [Home](https://cd-visuals.com/): One-page overview of every service, the comprehensive brand package, client testimonials, the process, the founder's story, FAQs, and the project inquiry form.
+- [Home](https://cd-visuals.com/): One-page overview of every service, the comprehensive brand package, client testimonials, the founder's story, FAQs, and the project inquiry form.
 - [Services](https://cd-visuals.com/#services): Brand Development; Social Media & Marketing; Photography & Cinematography, with what each does for a client's business and a short video from real client work for each.
 - [Testimonials](https://cd-visuals.com/#testimonials): What clients including The Gathering Place Rochester, CRCDS, Shop GLD and Proper Grahamer say about working with Chris.
 - [Brand packages](https://cd-visuals.com/#branding): Why a complete brand package (story, identity, website, launch content, print, social templates, personal brand) outperforms building piece by piece.

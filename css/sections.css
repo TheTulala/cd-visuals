@@ -331,7 +331,7 @@
   }
 }
 
-/* BRAND PACKAGE (light) */
+/* BRAND PACKAGE */
 .branding__title {
   max-width: 20ch;
   margin-bottom: var(--space-l);
@@ -340,7 +340,7 @@
 .compare {
   display: grid;
   margin-block: var(--space-xl);
-  border: 1px solid var(--black);
+  border: var(--hairline);
 }
 
 .compare__col {
@@ -348,13 +348,12 @@
 }
 
 .compare__col--before {
-  color: var(--black-72);
+  color: var(--white-72);
 }
 
-/* Inverted cell: white on black (20.8:1) */
 .compare__col--after {
-  background: var(--black);
-  color: var(--white);
+  background: var(--white);
+  color: var(--black);
 }
 
 .compare__title {
@@ -363,11 +362,11 @@
 }
 
 .compare__col--before .compare__title {
-  color: var(--black-72);
+  color: var(--white-72);
 }
 
 .compare__col--after .compare__title {
-  color: var(--white);
+  color: var(--black);
 }
 
 .compare__list {
@@ -390,7 +389,7 @@
   top: 0.8em;
   width: 1rem;
   height: 1px;
-  background: var(--black-72);
+  background: var(--white-50);
 }
 
 .compare__col--after li::before {
@@ -400,7 +399,7 @@
   top: 0.35em;
   width: 0.45rem;
   height: 0.85rem;
-  border: solid var(--green);
+  border: solid var(--black);
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
@@ -425,29 +424,29 @@
   padding: 0;
   display: grid;
   grid-template-columns: 1fr;
-  border-top: 1px solid var(--black-16);
-  border-left: 1px solid var(--black-16);
+  border-top: var(--hairline);
+  border-left: var(--hairline);
 }
 
 .includes__item {
   padding: var(--space-m);
-  border-right: 1px solid var(--black-16);
-  border-bottom: 1px solid var(--black-16);
+  border-right: var(--hairline);
+  border-bottom: var(--hairline);
   transition: background-color 0.3s var(--ease);
 }
 
 .includes__item:hover {
-  background: var(--black-04);
+  background: var(--white-08);
 }
 
 .includes__item h4 {
   font-size: var(--step-1);
   margin-bottom: 0.5rem;
-  color: var(--black);
+  color: var(--green);
 }
 
 .includes__item p {
-  color: var(--black-72);
+  color: var(--white-72);
   font-size: var(--step--1);
   line-height: 1.6;
 }
@@ -498,55 +497,7 @@
   }
 }
 
-/* PROCESS */
-.steps {
-  list-style: none;
-  padding: 0;
-  display: grid;
-  gap: var(--space-l);
-  margin-top: var(--space-xl);
-  counter-reset: none;
-}
-
-.step {
-  position: relative;
-  padding-top: var(--space-m);
-  border-top: 2px solid var(--white);
-}
-
-.step__num {
-  display: block;
-  font-family: var(--font-display);
-  font-size: var(--step-4);
-  line-height: 1;
-  color: transparent;
-  -webkit-text-stroke: 1.5px var(--green);
-  margin-bottom: var(--space-s);
-}
-
-.step__title {
-  font-size: var(--step-2);
-  margin-bottom: var(--space-xs);
-  color: var(--white);
-}
-
-.step p {
-  color: var(--white-72);
-}
-
-@media (width >= 52em) {
-  .steps {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (width >= 72em) {
-  .steps {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-/* WORK (follows the dark process band, so a hairline marks the change) */
+/* WORK (follows the dark brand package, so a hairline marks the change) */
 .work {
   border-top: var(--hairline);
 }
@@ -641,15 +592,29 @@
   list-style: none;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
   gap: var(--space-s);
 }
 
+@media (width >= 36em) {
+  .work__cats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 64em) {
+  .work__cats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* The arrow sits in the card's top-right corner so it never wraps under a long title */
 .cat-card a {
+  position: relative;
   display: grid;
+  align-content: start;
   gap: 0.5rem;
   height: 100%;
-  padding: var(--space-m);
+  padding: var(--space-m) calc(var(--space-m) + 1.5rem) var(--space-m) var(--space-m);
   border: 1px solid var(--white-50);
   text-decoration: none;
   color: var(--white);
@@ -670,11 +635,19 @@
   text-transform: uppercase;
 }
 
-.cat-card__title::after {
-  content: " \2197";
-  font-family: var(--font-body);
-  font-size: 0.6em;
+.cat-card a::after {
+  content: "\2197";
+  position: absolute;
+  top: var(--space-m);
+  right: var(--space-m);
+  font-size: var(--step-1);
+  line-height: 1;
   color: var(--green);
+  transition: transform 0.25s var(--ease);
+}
+
+.cat-card a:hover::after {
+  transform: translate(2px, -2px);
 }
 
 .cat-card__text {
@@ -794,7 +767,11 @@
   }
 }
 
-/* TESTIMONIALS */
+/* TESTIMONIALS (follows the dark problem section, so a hairline marks the change) */
+.testimonials {
+  border-top: var(--hairline);
+}
+
 .quotes {
   list-style: none;
   padding: 0;
