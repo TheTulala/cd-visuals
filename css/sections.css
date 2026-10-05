@@ -828,15 +828,6 @@
   object-fit: cover;
 }
 
-.quote__avatar--initials {
-  display: grid;
-  place-items: center;
-  font-family: var(--font-display);
-  font-size: var(--step-1);
-  letter-spacing: 0.04em;
-  color: var(--green);
-}
-
 .quote__who {
   display: grid;
   font-weight: 800;
